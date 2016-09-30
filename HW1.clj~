@@ -1,0 +1,42 @@
+(ns HW1)
+
+
+(defn double1
+  [blah]
+  (if (= blah '())
+    ()
+    (list (peek blah) (peek blah) (double1 (rest blah)))))
+
+
+
+(defn double2
+  [c]
+  (if (= c '())
+    ()
+    (cons (peek c) (cons (peek c) (double2 (rest c))))))
+
+
+
+(defn member1? [list elt]
+    "returns true if the element occurs in 
+     the list and false if it does not"
+    (cond 
+        (empty? list) false
+        (= (first list) elt) true
+        true (recur (rest list) elt)))
+
+    
+
+(defn nodupls [list]
+  "takes a single list and 
+   returns the list with duplicate
+    elements removed"
+  (cond
+    (empty? list) false
+    (member1? ((first list) (rest list)))
+     (nodupls (rest list))
+    :else (cons (first list) (distinct (rest list)))))
+
+
+
+
